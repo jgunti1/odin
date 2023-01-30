@@ -18,3 +18,10 @@ div.appendChild(paragraph2);
 container.appendChild(content);
 container.appendChild(header);
 container.appendChild(div);
+const btn = document.querySelector('#btn');
+const buttons = document.querySelectorAll('button');
+buttons.forEach((button)=>{
+    button.addEventListener('click',()=>{
+        alert(button.id);
+    })
+})
