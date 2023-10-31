@@ -6,7 +6,7 @@ const buttons = document.querySelectorAll('button');
 var total;
 var calcScr = document.getElementsByClassName('calculator-screen');
 var displayValue = parseInt(calcScr[0].value);
-
+console.log(calcScr.textContent = 'Jordan');
 /* Math Functions*/
 function add(numOne,numTwo) {
     return numOne + numTwo;
@@ -37,12 +37,22 @@ function operate(numOne,numTwo,operator) {
     }
 }
 
+function clear() {
+    calcScr.textContent = '';
+}
+
 buttons.forEach(function (i){
     i.addEventListener('click',function(){
         if (isNaN(i.value) == false){
-            numOne = i.value;
-            displayValue += numOne;
-            calcScr.value = displayValue;
+            if (operator == null) {
+                numOne += i.value;
+            }
+            else {
+                numTwo += i.value;
+            }
+    
+            console.log(numOne);
+            console.log(numTwo);
             
         }
         else if (i.value == '-' || i.value =='+' ||i.value =='/' || i.value == '*')
