@@ -4,9 +4,8 @@ var numTwo= 0;
 var operator;
 const buttons = document.querySelectorAll('button');
 var total;
-var calcScr = document.getElementsByClassName('calculator-screen');
-var displayValue = parseInt(calcScr[0].value);
-console.log(calcScr.textContent = 'Jordan');
+var calcScr = document.getElementById('calc-screen');
+
 /* Math Functions*/
 function add(numOne,numTwo) {
     return numOne + numTwo;
@@ -38,28 +37,19 @@ function operate(numOne,numTwo,operator) {
 }
 
 function clear() {
-    calcScr.textContent = '';
+    calcScr.textContent = '0';
 }
 
 buttons.forEach(function (i){
     i.addEventListener('click',function(){
-        if (isNaN(i.value) == false){
-            if (operator == null) {
-                numOne += i.value;
-            }
-            else {
-                numTwo += i.value;
-            }
-    
-            console.log(numOne);
-            console.log(numTwo);
-            
+        if (numTwo == 0){
+            numOne += i.value;
+            calcScr.value = Number(numOne);
         }
-        else if (i.value == '-' || i.value =='+' ||i.value =='/' || i.value == '*')
-        {
-            total = calcScr[0].value;
-            operator = i.value;
-            console.log(operator);
+        else if (operator != null && numOne != 0){
+            numTwo += i.value;
+            calcScr.value += operator;
+            calcScr.value += numTwo;
         }
         
     })
