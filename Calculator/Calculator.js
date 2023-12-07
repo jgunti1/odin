@@ -1,7 +1,9 @@
 // Variables
-var numOne = 0;
-var numTwo= 0;
-var operator;
+var numOne = '';
+var strOne='';
+var numTwo= '';
+var strTwo = '';
+var operator='';
 const buttons = document.querySelectorAll('button');
 var total;
 var calcScr = document.getElementById('calc-screen');
@@ -37,20 +39,40 @@ function operate(numOne,numTwo,operator) {
 }
 
 function clear() {
-    calcScr.textContent = '0';
-}
+    calcScr.value = '0';
 
+}
+//(i.value != '+' || i.value != '-' || i.value != '/' ||i.value != '*')
+//&& operator ==null  //&& i.value != '='
 buttons.forEach(function (i){
     i.addEventListener('click',function(){
-        if (numTwo == 0){
-            numOne += i.value;
-            calcScr.value = Number(numOne);
+      
+        if (i.value == 'all-clear'){
+            clear();
+            numOne = 0;
+            numTwo = 0;
+            operator = null;
         }
-        else if (operator != null && numOne != 0){
-            numTwo += i.value;
+        else if ( !Number.isNaN(i.value)  ){
+            numOne += parseInt(i.value);
+            strOne += i.value;
+            calcScr.value = strOne;
+        }
+        else if (i.value == '+' || i.value == '-' || i.value == '/' ||
+        i.value == '*') {
+            
+            operator = i.value;
             calcScr.value += operator;
-            calcScr.value += numTwo;
-        }
+            
+         }
+         console.log(calcScr.value);
+        // else if (operator != null && i.value != '=') {
+        //     numTwo = parseFloat(i.value);
+        //     strTwo += i.value;
+        //     calcScr.value = strTwo;
+        // }
+        
         
     })
 })
+

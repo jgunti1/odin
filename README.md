@@ -11,3 +11,6 @@ Finished DOM Manipulation and Events
 10/31/23
 1) Use textContent to populate display
 2) Add eventListener for number buttons specifically
+
+12/7/23
+1) Number is still stored after clicking all clear
