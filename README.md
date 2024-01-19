@@ -14,3 +14,10 @@ Finished DOM Manipulation and Events
 
 12/7/23
 1) Number is still stored after clicking all clear
+
+12/15/23
+1) Wasn't resetting the number variables when I clicked all clear
+
+1/19/23
+1) Need to learn to be consistent'
+2) Created function for displaying each number in the calculator display
