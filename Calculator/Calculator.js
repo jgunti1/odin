@@ -1,7 +1,7 @@
 // Variables
-var numOne = '';
+var numOne = 0;
 var strOne='';
-var numTwo= '';
+var numTwo= 0;
 var strTwo = '';
 var operator='';
 const buttons = document.querySelectorAll('button');
@@ -40,6 +40,24 @@ function operate(numOne,numTwo,operator) {
 
 function clear() {
     calcScr.value = '0';
+    numOne = 0;
+    strOne = '';
+    numTwo = 0;
+    strTwo = '';
+    operator = null;
+
+}
+var numButtons = document.getElementsByClassName("num");
+console.log(numButtons);
+for (var i = 0; i < numButtons.length; i ++) {
+	numButtons[i].addEventListener('click',displayNumbers,false);
+}
+// This function displays each individual number when they are clicked on in the calculator screen
+function displayNumbers() {
+	var num =this.value;
+	var display = document.getElementById('calc-screen'); 
+	display.value = num;
+	
 
 }
 //(i.value != '+' || i.value != '-' || i.value != '/' ||i.value != '*')
@@ -49,23 +67,9 @@ buttons.forEach(function (i){
       
         if (i.value == 'all-clear'){
             clear();
-            numOne = 0;
-            numTwo = 0;
-            operator = null;
         }
-        else if ( !Number.isNaN(i.value)  ){
-            numOne += parseInt(i.value);
-            strOne += i.value;
-            calcScr.value = strOne;
-        }
-        else if (i.value == '+' || i.value == '-' || i.value == '/' ||
-        i.value == '*') {
-            
-            operator = i.value;
-            calcScr.value += operator;
-            
-         }
-         console.log(calcScr.value);
+        
+         
         // else if (operator != null && i.value != '=') {
         //     numTwo = parseFloat(i.value);
         //     strTwo += i.value;
