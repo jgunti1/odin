@@ -48,7 +48,6 @@ function clear() {
 
 }
 var numButtons = document.getElementsByClassName("num");
-console.log(numButtons);
 for (var i = 0; i < numButtons.length; i ++) {
 	numButtons[i].addEventListener('click',displayNumbers,false);
 }
@@ -56,7 +55,7 @@ for (var i = 0; i < numButtons.length; i ++) {
 function displayNumbers() {
 	var num =this.value;
 	var display = document.getElementById('calc-screen'); 
-	display.value = num;
+	display.value += num;
 	
 
 }
