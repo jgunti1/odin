@@ -21,3 +21,6 @@ Finished DOM Manipulation and Events
 1/19/23
 1) Need to learn to be consistent'
 2) Created function for displaying each number in the calculator display
+
+1/26/23
+Gave up on Calculator, started Javascript path
