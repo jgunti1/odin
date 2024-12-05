@@ -1,13 +1,11 @@
 // Variables
 var numOne = 0;
-var strOne='';
 var numTwo= 0;
 var operator = "";
 const buttons = document.querySelectorAll('button');
 var total;
-var calcScr = document.getElementsByClassName('calculator-screen');
-var displayValue = parseInt(calcScr[0].value);
-
+var first = '';
+var second = '';
 /* Math Functions*/
 function add(numOne,numTwo) {
     return numOne + numTwo;
@@ -85,44 +83,13 @@ function isNumber(value) {
     return !isNaN(value) && isFinite(value);
   }
 
-function clear() {
-    calcScr.value = '0';
-    numOne = 0;
-    strOne = '';
-    numTwo = 0;
-    strTwo = '';
-    operator = null;
-
-}
-var numButtons = document.getElementsByClassName("num");
-for (var i = 0; i < numButtons.length; i ++) {
-	numButtons[i].addEventListener('click',displayNumbers,false);
-}
-// This function displays each individual number when they are clicked on in the calculator screen
-function displayNumbers() {
-	var num =this.value;
-	var display = document.getElementById('calc-screen'); 
-	display.value += num;
-	
-
-}
-//(i.value != '+' || i.value != '-' || i.value != '/' ||i.value != '*')
-//&& operator ==null  //&& i.value != '='
 buttons.forEach(function (i){
     i.addEventListener('click',function(){
         if (isNaN(i.value) == false){
-            numOne = i.value;
-            displayValue += numOne;
-            calcScr.value = displayValue;
-            
+            populateScreen(i.value);
         }
-        else if (i.value == '-' || i.value =='+' ||i.value =='/' || i.value == '*')
-        {
-            total = calcScr[0].value;
-            operator = i.value;
-            console.log(operator);
+        else {
+            populateScreen(i.value);
         }
-        
     })
 })
-
