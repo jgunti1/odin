@@ -2,11 +2,11 @@
 var numOne = 0;
 var strOne='';
 var numTwo= 0;
-var strTwo = '';
-var operator='';
+var operator = "";
 const buttons = document.querySelectorAll('button');
 var total;
-var calcScr = document.getElementById('calc-screen');
+var calcScr = document.getElementsByClassName('calculator-screen');
+var displayValue = parseInt(calcScr[0].value);
 
 /* Math Functions*/
 function add(numOne,numTwo) {
@@ -21,22 +21,69 @@ function multiply(numOne,numTwo) {
 function divide(numOne,numTwo) {
     return numOne / numTwo;
 }
-
+console.log(add(1.2, 2));
 //Operator function
 function operate(numOne,numTwo,operator) {
+
     if (operator == '+'){
-        add(numOne,numTwo);
+        return add(numOne,numTwo);
     }
     if (operator == '-') {
-        subtract(numOne,numTwo);
+        return subtract(numOne,numTwo);
     }
     if (operator == '*') {
-        multiply(numOne,numTwo);
+        console.log(numOne);
+        console.log(numTwo);
+        return multiply(numOne,numTwo);
     }
     if (operator == '/') {
-        divide(numOne,numTwo);
+        return divide(numOne,numTwo);
     }
 }
+
+function populateScreen(pop) {
+    if (document.getElementById('calculator-screen').value == "0" && pop != 'all-clear' ){
+        document.getElementById('calculator-screen').value = pop;
+        first = pop;
+    }
+    else {
+        if (pop == '+' || pop == '-' || pop == '/' || pop == '*' && operator == '') {
+            document.getElementById('calculator-screen').value += pop;
+            operator = pop;
+
+        }
+        else if (pop == '=') {
+            total = operate(parseFloat(first), parseFloat(second), operator);
+            document.getElementById('calculator-screen').value = total;
+            first = total; 
+            second = ''
+            operator = '';
+
+        }
+        else if (pop == 'all-clear'){
+            document.getElementById('calculator-screen').value = "0";
+            first = "";
+            second = "";
+        }
+        else if (pop == '.') {
+            document.getElementById('calculator-screen').value += pop;
+            document.getElementsByClassName("decimal")[0].disabled = true;
+        }
+        else if (operator == '') {
+            document.getElementById('calculator-screen').value += pop;
+            first += pop;
+        }
+        else {
+            document.getElementById('calculator-screen').value = pop;
+            second += pop;
+            document.getElementsByClassName("decimal")[0].disabled = false;
+        }
+    }
+}
+
+function isNumber(value) {
+    return !isNaN(value) && isFinite(value);
+  }
 
 function clear() {
     calcScr.value = '0';
@@ -63,18 +110,18 @@ function displayNumbers() {
 //&& operator ==null  //&& i.value != '='
 buttons.forEach(function (i){
     i.addEventListener('click',function(){
-      
-        if (i.value == 'all-clear'){
-            clear();
+        if (isNaN(i.value) == false){
+            numOne = i.value;
+            displayValue += numOne;
+            calcScr.value = displayValue;
+            
         }
-        
-         
-        // else if (operator != null && i.value != '=') {
-        //     numTwo = parseFloat(i.value);
-        //     strTwo += i.value;
-        //     calcScr.value = strTwo;
-        // }
-        
+        else if (i.value == '-' || i.value =='+' ||i.value =='/' || i.value == '*')
+        {
+            total = calcScr[0].value;
+            operator = i.value;
+            console.log(operator);
+        }
         
     })
 })
