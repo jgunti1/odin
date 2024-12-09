@@ -24,3 +24,15 @@ Finished DOM Manipulation and Events
 
 1/26/23
 Gave up on Calculator, started Javascript path
+
+12/9/24
+Finished Calculator, don't know how I did it
+Bugs: 
+- Leading zeros
+- Trailing zeros on floating numbers
+
+Areas for Improvement: 
+- Javascript is pretty messy, definitely could clean it up
+- Redundant code need to simplify
+- Write my own css and html
+- Being consistent
